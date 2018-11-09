@@ -1,0 +1,52 @@
+﻿<Page x:Class="WpfApp1.Index"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp1"
+      xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"  
+      fw:AcrylicWindow.Enabled="True"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="600"
+      Title="Index">
+    <Grid Background="#00FFFFFF" fw:PointerTracker.Enabled="True" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Image Source="/Resources/Images/db.png"/>
+        <StackPanel Grid.Row="1" VerticalAlignment="Center">
+            <TextBox x:Name="TextBox" Style="{StaticResource TextBoxRevealStyle}" TextChanged="TextBox_TextChanged" Padding="3"  FontSize="17" Margin="20,20" VerticalContentAlignment="Center"   Height="40" >
+                请输入要查找的内容</TextBox>
+        </StackPanel>
+        <StackPanel Grid.Row="2" VerticalAlignment="Center">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="Qbutton" Tag="query" Style="{StaticResource ButtonRevealStyle}" Grid.Column="0" Margin="30,10" Padding="3" Click="button_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Icons/query.png" Height="20"/>
+                        <TextBlock Margin="2,0,0,0" FontSize="20">查找记录</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="Abutton" Tag="add" Style="{StaticResource ButtonRevealStyle}" Grid.Column="1" Margin="30,10" Padding="3" Click="button_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Icons/add.png" Height="20"/>
+                        <TextBlock Margin="2,0,0,0" FontSize="20">增加记录</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="Rbutton" Style="{StaticResource ButtonRevealStyle}" Tag="report"  Grid.Column="2" Margin="30,10" Padding="3" Click="button_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Icons/report.png" Height="20"/>
+                        <TextBlock Margin="2,0,0,0" FontSize="20">生成报表</TextBlock>
+                    </StackPanel>
+                </Button>
+            </Grid>
+        </StackPanel>
+    </Grid>
+
+</Page>
