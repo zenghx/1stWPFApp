@@ -7,12 +7,12 @@
         mc:Ignorable="d"
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         fw:AcrylicWindow.Enabled="True"
-        Title="Login" Height="326.113" Width="507.287"
-        WindowStyle="None"
-        AllowsTransparency="True"
+        Title="登录" Height="326.113" Width="507.287"
+        ResizeMode="NoResize" Icon="/Resources/Icons/login.png"
+        WindowStartupLocation="CenterScreen"
         >
 
-    <Grid Background="#00ffffff" fw:PointerTracker.Enabled="True">
+    <Grid Background="#30ffffff" fw:PointerTracker.Enabled="True">
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="2*"/>

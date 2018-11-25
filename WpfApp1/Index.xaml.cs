@@ -69,8 +69,9 @@ namespace WpfApp1
             object obj;
             if (name == "add")
             {
-                Add add = new Add{ParentWindow = _parentWin};
-                obj = add;
+                Add add = new Add();
+                add.ShowDialog();
+                return;
             }
             else if (name == "query")
             {

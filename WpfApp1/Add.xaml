@@ -1,32 +1,160 @@
-﻿<Page x:Class="WpfApp1.Add"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:WpfApp1"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="Add">
-
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+﻿<Window x:Class="WpfApp1.Add"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"  
+        fw:AcrylicWindow.Enabled="True"
+        ResizeMode="NoResize"
+        WindowStyle="None" Icon="/Resources/Icons/add.png"
+        WindowStartupLocation="CenterScreen"
+        Title=" " Height="500" Width="700">
+    <Grid Background="#00FFFFFF" fw:PointerTracker.Enabled="True">
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="54,40.093,0,0" TextWrapping="Wrap" Text="TextBox" Width="166" Grid.Column="1" Height="22.573" VerticalAlignment="Top" Grid.Row="1"/>
-
-        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="23" Margin="54,38.286,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="166" Grid.Column="1" Grid.Row="3"/>
-        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="23" Margin="54,32.543,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="166" Grid.Column="1" Grid.Row="2"/>
-        <Button x:Name="button" Content="提交" Grid.Column="1" HorizontalAlignment="Left" Margin="255,42.929,0,0" Grid.Row="4" VerticalAlignment="Top" Width="75" Background="#FFDDDDDD">
-        </Button>
-        <Label x:Name="label" Grid.Row="0" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" ScrollViewer.HorizontalScrollBarVisibility="Auto" Background="#1296db" Foreground="White">编辑要添加的书籍资料</Label>
-
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="7*"/>
+                <RowDefinition Height="7*"/>
+                <RowDefinition Height="7*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+        <StackPanel Margin="3" Grid.Column="0" Grid.Row="0">
+            <Label FontSize="20" FontFamily="Segue UI Bold" Content="添加新记录" Background="#a01296db" Foreground="White"/>
+        </StackPanel>
+        <StackPanel Margin="3" Grid.Column="0" Grid.Row="1">
+            <Label Content="图书信息" FontSize="18" FontFamily="Segue UI Bold"/>
+            <StackPanel>
+                <Grid Height="40">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="ISBN" FontSize="15" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                    <TextBox x:Name="ISBN" Grid.Column="1" Height="30" Style="{StaticResource TextBoxRevealStyle}" Margin="3,0,10,0" VerticalContentAlignment="Center"/>
+                </Grid>
+            </StackPanel>
+            <StackPanel>
+                <Grid Height="40">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock  Text="图书名称" FontSize="15" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                    <TextBox x:Name="BName" Grid.Column="1" Height="30" Style="{StaticResource TextBoxRevealStyle}" Margin="3,0,10,0" VerticalContentAlignment="Center"/>
+                </Grid>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Margin="3" Grid.Column="1" Grid.Row="1">
+            <Label Content=" " FontSize="18" FontFamily="Segue UI Bold"/>
+            <StackPanel>
+                <Grid Height="40">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="销量" FontSize="15" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                    <TextBox x:Name="Sales" Grid.Column="1" Height="30" Style="{StaticResource TextBoxRevealStyle}" Margin="3,0,10,0" VerticalContentAlignment="Center"/>
+                </Grid>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Margin="3" Grid.Column="0" Grid.Row="2">
+            <Label Content="作者信息" FontSize="18" FontFamily="Segue UI Bold"/>
+            <StackPanel>
+                <Grid Height="40">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="作者代码" FontSize="15" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                    <TextBox x:Name="AID" Grid.Column="1" Height="30" Style="{StaticResource TextBoxRevealStyle}" Margin="3,0,10,0" VerticalContentAlignment="Center"/>
+                </Grid>
+            </StackPanel>
+            <StackPanel>
+                <Grid Height="40">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock  Text="作者姓名" FontSize="15" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                    <TextBox x:Name="AName" Grid.Column="1" Height="30" Style="{StaticResource TextBoxRevealStyle}" Margin="3,0,10,0" VerticalContentAlignment="Center"/>
+                </Grid>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Margin="3" Grid.Column="1" Grid.Row="2">
+            <Label Content=" " FontSize="18" FontFamily="Segue UI Bold"/>
+            <StackPanel>
+                <Grid Height="40">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="作者电话" FontSize="15" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                    <TextBox x:Name="ATele" Grid.Column="1" Height="30" Style="{StaticResource TextBoxRevealStyle}" Margin="3,0,10,0" VerticalContentAlignment="Center"/>
+                </Grid>
+            </StackPanel>
+            <StackPanel>
+                <Grid Height="40">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="作者电邮" FontSize="15" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                    <TextBox x:Name="AEmail" Grid.Column="1" Height="30" Style="{StaticResource TextBoxRevealStyle}" Margin="3,0,10,0" VerticalContentAlignment="Center"/>
+                </Grid>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Margin="3" Grid.Column="0" Grid.Row="3">
+            <Label Content="作者信息" FontSize="18" FontFamily="Segue UI Bold"/>
+            <StackPanel>
+                <Grid Height="40">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="出版社代码" FontSize="15" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                    <TextBox x:Name="PubID" Grid.Column="1" Height="30" Style="{StaticResource TextBoxRevealStyle}" Margin="3,0,10,0" VerticalContentAlignment="Center"/>
+                </Grid>
+            </StackPanel>
+            <StackPanel>
+                <Grid Height="40">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock  Text="出版社名称" FontSize="15" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                    <TextBox x:Name="PubName" Grid.Column="1" Height="30" Style="{StaticResource TextBoxRevealStyle}" Margin="3,0,10,0" VerticalContentAlignment="Center"/>
+                </Grid>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Margin="3" Grid.Column="1" Grid.Row="3">
+            <Label Content=" " FontSize="18" FontFamily="Segue UI Bold"/>
+            <StackPanel>
+                <Grid Height="40">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="出版社电话" FontSize="15" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                    <TextBox x:Name="PubTele" Grid.Column="1" Height="30" Style="{StaticResource TextBoxRevealStyle}" Margin="3,0,10,0" VerticalContentAlignment="Center"/>
+                </Grid>
+            </StackPanel>
+            <StackPanel>
+                <Grid Height="40">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="出版社地址" FontSize="15" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                    <TextBox x:Name="PubAddr" Grid.Column="1" Height="30" Style="{StaticResource TextBoxRevealStyle}" Margin="3,0,10,0" VerticalContentAlignment="Center"/>
+                </Grid>
+            </StackPanel>
+        </StackPanel>
+        <Button Grid.Column="1" Grid.Row="4" Content="提交" 
+                Margin="10,3" Width="200" HorizontalAlignment="Right" Style="{StaticResource ButtonRevealStyle}" />
     </Grid>
-</Page>
+</Window>

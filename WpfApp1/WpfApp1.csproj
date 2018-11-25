@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="FluentWPF, Version=0.4.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentWPF.0.4.1\lib\net45\FluentWPF.dll</HintPath>
@@ -65,6 +68,9 @@
     </Compile>
     <Compile Include="Detail.xaml.cs">
       <DependentUpon>Detail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OSWarning.xaml.cs">
+      <DependentUpon>OSWarning.xaml</DependentUpon>
     </Compile>
     <Compile Include="SearchRes.xaml.cs">
       <DependentUpon>SearchRes.xaml</DependentUpon>
@@ -99,6 +105,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="OSWarning.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SearchRes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -149,6 +159,24 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\index.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\query_128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\add_128.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

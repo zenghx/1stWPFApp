@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"  
-        mc:Ignorable="d"
+        mc:Ignorable="d" Icon="/Resources/Icons/index.png"
         fw:AcrylicWindow.Enabled="True"
+        WindowStartupLocation="CenterScreen"
         Title="Main" Height="450" Width="700" >
 
     <Grid>

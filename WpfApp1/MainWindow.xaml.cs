@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 
 namespace WpfApp1
 {
@@ -22,6 +23,14 @@ namespace WpfApp1
     {
         public MainWindow()
         {
+            RegistryKey registryKey = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows NT\\CurrentVersion");
+            var BuildNumber=registryKey.GetValue("CurrentBuildNumber").ToString();
+            var build = Convert.ToInt32(BuildNumber);
+            if (build< 17134)
+            {
+                OSWarning warning = new OSWarning(this);
+                warning.ShowDialog();
+            }
             InitializeComponent();
             
      
