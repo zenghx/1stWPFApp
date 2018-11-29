@@ -6,7 +6,60 @@
       xmlns:local="clr-namespace:WpfApp1"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+      xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"  
+      fw:AcrylicWindow.Enabled="True"
       Title="SearchRes">
+    <Page.Resources>
+        <local:AuthorsPresentationConverter x:Key="APConverter"/>
+        <local:CountConverter x:Key="CConverter"/>
+        <DataTemplate x:Key="listBoxTemplate" >
+            <StackPanel Margin="4">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="{Binding Path=ImgPath}" Grid.Column="0"/>
+                    <StackPanel Grid.Column="1">
+                        <TextBlock Text="{Binding BName}" FontSize="15"/>
+                        <TextBlock>
+                            <TextBlock.Text>
+                                <MultiBinding Converter="{StaticResource APConverter}" >
+                                    <Binding Path="ANationality"/>
+                                    <Binding Path="AName"/>
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                       <!-- <TextBlock>
+                        <TextBlock  Text="{Binding ANationality,Converter={StaticResource NPConverter}}"/>
+                        <TextBlock Text="{Binding AName}"/>
+                        </TextBlock>-->
+                        <TextBlock Text="{Binding PubName}"/>
+                    </StackPanel>
+                    
+                </Grid>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+    <Grid Background="#30ffffff" fw:PointerTracker.Enabled="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="9*" />
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label FontSize="20" FontFamily="Segue UI Bold" Content="查询结果" Background="#a01296db" Foreground="White" />
+            </Grid>
+            <Label x:Name="countS" FontSize="18"  
+                   Content="{Binding Count, Converter={StaticResource CConverter}}"/>
+        </StackPanel>
+        <ListBox MouseDoubleClick="ListBox_Selected" SelectionMode="Single" Style="{StaticResource ListBoxRevealStyle}"  fw:PointerTracker.Enabled="True" x:Name="listBox" BorderThickness="0" Grid.Row="1" Background="#00ffffff" ItemTemplate="{StaticResource listBoxTemplate}" ItemsSource="{Binding Tables[0]}"/>
 
-    <Grid/>
+        <Button x:Name="back" FontSize="20" Content="返回" Style="{StaticResource ButtonRevealStyle}" Grid.Row="2" Width="200" Margin="20,3" Height="40" HorizontalAlignment="Right" Click="Back_Click"/>
+    </Grid>
 </Page>

@@ -7,7 +7,7 @@
       xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"  
       fw:AcrylicWindow.Enabled="True"
       mc:Ignorable="d"  
-      d:DesignHeight="450" d:DesignWidth="600"
+      d:DesignHeight="450" d:DesignWidth="600" 
       Title="主页">
     <Grid Background="#30FFFFFF" fw:PointerTracker.Enabled="True" >
         <Grid.RowDefinitions>

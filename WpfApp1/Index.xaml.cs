@@ -54,13 +54,7 @@ namespace WpfApp1
            
             TextBox.Foreground = Brushes.Black;
         }
-
-        private Window1 _parentWin;
-        public Window1 ParentWindow
-        {
-            get { return _parentWin; }
-            set { _parentWin = value; }
-        }
+        public Window1 ParentWindow { get; set; }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
@@ -75,13 +69,13 @@ namespace WpfApp1
             }
             else if (name == "query")
             {
-                SearchRes res = new SearchRes { ParentWindow = _parentWin };
+                SearchRes res = new SearchRes { ParentWindow = ParentWindow };
                 obj = res;
             }
             else if (name == "report")
             { return; }
             else return;
-            _parentWin.frmMain.Content = obj;
+            ParentWindow.frmMain.Content = obj;
             
         }
     }

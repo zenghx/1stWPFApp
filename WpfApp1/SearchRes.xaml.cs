@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,15 +23,57 @@ namespace WpfApp1
     /// </summary>
     public partial class SearchRes : Page
     {
-        private Window1 _parentWin;
-        public Window1 ParentWindow
-        {
-            get { return _parentWin; }
-            set { _parentWin = value; }
-        }
+        string SqlCredentials = "Server=ZENGHX-LAPTOP\\SQLEXPRESS;Integrated Security=SSPI;database=Chart";
+        public string Sqlcmd { get; set; }
+        public Window1 ParentWindow { get; set; }
+        
         public SearchRes()
         {
+            
             InitializeComponent();
+            Bind();
+        }
+
+        public class Countobj : INotifyPropertyChanged
+        {
+            public int Count { set; get; }
+            public event PropertyChangedEventHandler PropertyChanged;
+            private void OnPropertyChanged(string propertyName) => this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private void Bind()
+        {
+            DataSet ds = new DataSet();
+            using (SqlConnection sqlcn = new SqlConnection(SqlCredentials))
+            {
+                using (SqlCommand cmd = new SqlCommand("SELECT ISBN,AName,ANationality,BName,PubName FROM BOOKS,Authors,Publishers Where Books.AID=Authors.AID AND Books.PubID=Publishers.PubID", sqlcn))
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter();
+                    sqlcn.Open();
+                    adapter.SelectCommand = cmd;
+                    adapter.Fill(ds);
+                    listBox.DataContext = ds;
+                }
+            }
+            DataTable DT = ds.Tables[0];
+            Countobj countobj = new Countobj { Count = DT.Rows.Count };
+            countS.DataContext = countobj;
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            Index index = new Index { ParentWindow = ParentWindow };
+            ParentWindow.frmMain.Navigate(index);
+        }
+
+        private void ListBox_Selected(object sender, RoutedEventArgs e)
+        {
+            var item = (sender as ListBox).SelectedItem;
+            var temp = (item as DataRowView).Row.ItemArray[0];
+            string ISBN=temp.ToString();
+            Detail detail = new Detail { _ISBN = ISBN, Res=this,ParentWindow=ParentWindow };
+            ParentWindow.frmMain.Navigate(detail);
+            return;
         }
     }
 }

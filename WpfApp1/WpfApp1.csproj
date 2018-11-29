@@ -69,6 +69,7 @@
     <Compile Include="Detail.xaml.cs">
       <DependentUpon>Detail.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters.cs" />
     <Compile Include="OSWarning.xaml.cs">
       <DependentUpon>OSWarning.xaml</DependentUpon>
     </Compile>

@@ -20,9 +20,18 @@ namespace WpfApp1
     /// </summary>
     public partial class Detail : Page
     {
+        public string _ISBN { set; get; }
+        public SearchRes Res { set; get; }
+        public Window1 ParentWindow { get; set; }
+
         public Detail()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ParentWindow.frmMain.Navigate(Res);
         }
     }
 }

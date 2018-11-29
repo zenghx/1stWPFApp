@@ -93,19 +93,11 @@
                         <ColumnDefinition/>
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="作者电话" FontSize="15" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" />
-                    <TextBox x:Name="ATele" Grid.Column="1" Height="30" Style="{StaticResource TextBoxRevealStyle}" Margin="3,0,10,0" VerticalContentAlignment="Center"/>
+                    <TextBlock Text="作者国籍" FontSize="15" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                    <TextBox x:Name="ANationality" Grid.Column="1" Height="30" Style="{StaticResource TextBoxRevealStyle}" Margin="3,0,10,0" VerticalContentAlignment="Center"/>
                 </Grid>
             </StackPanel>
             <StackPanel>
-                <Grid Height="40">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="3*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Text="作者电邮" FontSize="15" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" />
-                    <TextBox x:Name="AEmail" Grid.Column="1" Height="30" Style="{StaticResource TextBoxRevealStyle}" Margin="3,0,10,0" VerticalContentAlignment="Center"/>
-                </Grid>
             </StackPanel>
         </StackPanel>
         <StackPanel Margin="3" Grid.Column="0" Grid.Row="3">
@@ -155,6 +147,6 @@
             </StackPanel>
         </StackPanel>
         <Button Grid.Column="1" Grid.Row="4" Content="提交" 
-                Margin="10,3" Width="200" HorizontalAlignment="Right" Style="{StaticResource ButtonRevealStyle}" />
+                Margin="10,3" FontSize="18" Width="200" HorizontalAlignment="Right" Style="{StaticResource ButtonRevealStyle}" />
     </Grid>
 </Window>
