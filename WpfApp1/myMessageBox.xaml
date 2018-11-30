@@ -1,0 +1,26 @@
+﻿<Window x:Class="WpfApp1.myMessageBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"  
+        fw:AcrylicWindow.Enabled="True"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Title=" " Height="200" Width="400">
+    <Grid Background="#30FFFFFF" fw:PointerTracker.Enabled="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock  x:Name="MessageBlock" Text="初始化" VerticalAlignment="Center" Margin="10,0" FontSize="15"/>
+        <fw:DropShadowPanel Background="#30000000" Grid.Row="1"  ShadowMode="Outer" >
+            <Button Content="确定" VerticalAlignment="Center" 
+                    HorizontalAlignment="Right" Width="80" IsDefault="True"
+                    Margin="0,0,10.333,0"  Click="Button_Click"
+                    Grid.Column="1" FontSize="15" Style="{StaticResource ButtonRevealStyle}"/>
+        </fw:DropShadowPanel>
+    </Grid>
+</Window>

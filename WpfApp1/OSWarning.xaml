@@ -4,9 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
-        xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"  
         mc:Ignorable="d"
-        fw:AcrylicWindow.Enabled="True"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize" Icon="/Resources/Icons/warning.png"
         Title="警告" Height="200" Width="400">
@@ -27,8 +25,8 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Content="是" Margin="10,3" Width="100" Style="{StaticResource ButtonRevealStyle}" Click="Y_Click"/>
-            <Button Grid.Column="1" Content="否" Margin="10,3" Width="100" Style="{StaticResource ButtonRevealStyle}" Click="N_Click"/>
+            <Button Content="是" Margin="10,3" Width="100"  Click="Y_Click"/>
+            <Button Grid.Column="1" Content="否" Margin="10,3" Width="100"  Click="N_Click"/>
         </Grid>
     </Grid>
 </Window>

@@ -46,7 +46,7 @@
         <Button x:Name="button" Grid.Row="2" FontSize="20" FontFamily="Segoe UI Bold" 
                 Content="登录" HorizontalAlignment="Center"  VerticalAlignment="Top" Foreground="White" Width="175" Background="#a01296db" Click="Button_Click"
                 VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-                Style="{StaticResource ButtonRevealStyle}"/>
+                Style="{StaticResource ButtonRevealStyle}" IsDefault="True"/>
 
     </Grid>
 </Window>

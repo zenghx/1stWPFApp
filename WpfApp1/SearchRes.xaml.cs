@@ -23,8 +23,7 @@ namespace WpfApp1
     /// </summary>
     public partial class SearchRes : Page
     {
-        string SqlCredentials = "Server=ZENGHX-LAPTOP\\SQLEXPRESS;Integrated Security=SSPI;database=Chart";
-        public string Sqlcmd { get; set; }
+        public string Key { get; set; }
         public Window1 ParentWindow { get; set; }
         
         public SearchRes()
@@ -44,9 +43,9 @@ namespace WpfApp1
         private void Bind()
         {
             DataSet ds = new DataSet();
-            using (SqlConnection sqlcn = new SqlConnection(SqlCredentials))
+            using (SqlConnection sqlcn = new SqlConnection(Config.SqlCredentials))
             {
-                using (SqlCommand cmd = new SqlCommand("SELECT ISBN,AName,ANationality,BName,PubName FROM BOOKS,Authors,Publishers Where Books.AID=Authors.AID AND Books.PubID=Publishers.PubID", sqlcn))
+                using (SqlCommand cmd = new SqlCommand("SELECT ISBN,AName,ANationality,BName,PubName FROM BOOKS,Authors,Publishers Where Books.AID=Authors.AID AND Books.PubID=Publishers.PubID AND ISBN=9787539982830", sqlcn))
                 {
                     SqlDataAdapter adapter = new SqlDataAdapter();
                     sqlcn.Open();

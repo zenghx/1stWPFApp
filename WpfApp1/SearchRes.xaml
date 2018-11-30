@@ -12,14 +12,15 @@
     <Page.Resources>
         <local:AuthorsPresentationConverter x:Key="APConverter"/>
         <local:CountConverter x:Key="CConverter"/>
+        <local:ISBN2Imgage x:Key="I2IConverter"/>
         <DataTemplate x:Key="listBoxTemplate" >
             <StackPanel Margin="4">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="120"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Image Source="{Binding Path=ImgPath}" Grid.Column="0"/>
+                    <Image Height="100" Source="{Binding ISBN,Converter={StaticResource I2IConverter}}" Grid.Column="0"/>
                     <StackPanel Grid.Column="1">
                         <TextBlock Text="{Binding BName}" FontSize="15"/>
                         <TextBlock>
