@@ -31,7 +31,7 @@
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <TextBox Style="{StaticResource TextBoxRevealStyle}" Background="#70ffffff" Grid.Column="2" x:Name="textBox" VerticalAlignment="Center" Margin="10,0,0,0" HorizontalAlignment="Left" Width="150" Height="36" VerticalContentAlignment="Center"/>
+                    <TextBox Style="{StaticResource TextBoxRevealStyle}" FontSize="16" Background="#70ffffff" Grid.Column="2" x:Name="textBox" VerticalAlignment="Center" Margin="10,0,0,0" HorizontalAlignment="Left" Width="150" Height="36" VerticalContentAlignment="Center"/>
                     <TextBlock Grid.Column="0" Grid.Row="0"  HorizontalAlignment="Right" FontSize="25" FontFamily="Segoe MDL2 Assets" Foreground="#1296db" Text="&#xE77B;" VerticalAlignment="Center"/>
                     <TextBlock Grid.Column="1" Grid.Row="0" Text=" 用户名" FontSize="30" FontFamily="Segoe UI Bold" Foreground="#1296db"/>
                     <PasswordBox  Background="#70ffffff" Grid.Row="1" Grid.Column="2" x:Name="passwBox" VerticalAlignment="Center" Margin="10,0,0,0" HorizontalAlignment="Left" Width="150" Height="36" VerticalContentAlignment="Center"/>

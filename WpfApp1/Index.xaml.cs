@@ -20,9 +20,11 @@ namespace WpfApp1
     /// </summary>
     public partial class Index : Page
     {
-        public Index()
+        private Window1 ParentWindow { get; set; }
+        public Index(Window1 window)
         {
             InitializeComponent();
+            ParentWindow=window;
             #region 设置自动选定
             SearchBox.PreviewMouseDown +=new MouseButtonEventHandler(TextBox_PreviewMouseDown);
             SearchBox.GotFocus +=new RoutedEventHandler(TextBox_GotFocus);
@@ -48,13 +50,13 @@ namespace WpfApp1
             e.Handled = true;
         }
         #endregion
-
+        #region 设置文字变色
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
            
             SearchBox.Foreground = Brushes.Black;
         }
-        public Window1 ParentWindow { get; set; }
+        #endregion
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
@@ -76,7 +78,7 @@ namespace WpfApp1
             }
             else if (name == "query")
             {
-                SearchRes res = new SearchRes(ParentWindow, SearchBox.Text);
+                SearchRes res = new SearchRes(ParentWindow, SearchBox.Text,this);
                 ParentWindow.frmMain.Content = res;
             }
             else if (name == "report")

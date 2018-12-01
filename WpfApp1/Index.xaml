@@ -30,13 +30,13 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="Qbutton" IsDefault="True" Tag="query" Style="{StaticResource ButtonRevealStyle}" Grid.Column="0" Margin="30,10" Padding="3" Click="button_Click">
+                <Button x:Name="Qbutton" IsDefault="True" Tag="query" Style="{StaticResource ButtonRevealStyle}" Grid.Column="1" Margin="30,10" Padding="3" Click="button_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Icons/query.png" Height="20"/>
                         <TextBlock Margin="2,0,0,0" FontSize="20">查找记录</TextBlock>
                     </StackPanel>
                 </Button>
-                <Button x:Name="Abutton" Tag="add" Style="{StaticResource ButtonRevealStyle}" Grid.Column="1" Visibility="{Binding Converter={StaticResource VsbConverter}}" Margin="30,10" Padding="3" Click="button_Click">
+                <Button x:Name="Abutton" Tag="add" Style="{StaticResource ButtonRevealStyle}" Grid.Column="0" Visibility="{Binding Converter={StaticResource VsbConverter}}" Margin="30,10" Padding="3" Click="button_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Icons/add.png" Height="20"/>
                         <TextBlock Margin="2,0,0,0" FontSize="20">增加记录</TextBlock>

@@ -23,18 +23,14 @@ namespace WpfApp1
     /// </summary>
     public partial class SearchRes : Page
     {
-        public string Key { get; set; }
-        public Window1 ParentWindow { get; set; }
+        private string Key { get; set; }
+        private Window1 ParentWindow { get; set; }
+        private Index index;
         
-        public SearchRes()
-        {
-            InitializeComponent();
-            Bind();
-        }
-
-        public SearchRes(Window1 window,string Key)
+        public SearchRes(Window1 window,string Key,Index index)
         {
             this.Key = Key;
+            this.index = index;
             ParentWindow = window;
             InitializeComponent();
             Bind();
@@ -53,51 +49,68 @@ namespace WpfApp1
         {
             DataSet ds = new DataSet();
             DataTable dt = new DataTable();
-            using (SqlConnection sqlcn = new SqlConnection(Config.SqlCredentials))
+            try
             {
+                using (SqlConnection sqlcn = new SqlConnection(Config.SqlCredentials))
+                {
+                    #region 通过ISBN精准查询
                     try
                     {
-                    if (Key.Length == 13 || Key.Length == 10)
-                        using (SqlCommand cmd = new SqlCommand("SELECT ISBN,AName,ANationality,BName,PubName FROM BOOKS,Authors,Publishers Where Books.AID=Authors.AID AND Books.PubID=Publishers.PubID AND ISBN=@ISBN", sqlcn))
-                        {
-                            cmd.Parameters.Add(new SqlParameter("@ISBN", long.Parse(Key)));
-                            SqlDataAdapter adapter = new SqlDataAdapter();
-                            sqlcn.Open();
-                            adapter.SelectCommand = cmd;
-                            adapter.Fill(ds);
-                        }
-                    else throw new FormatException();
+                        if (Key.Length == 13 || Key.Length == 10)
+                            using (SqlCommand cmd = new SqlCommand("SELECT ISBN,AName,ANationality,BName,PubName FROM BOOKS,Authors,Publishers Where Books.AID=Authors.AID AND Books.PubID=Publishers.PubID AND ISBN=@ISBN", sqlcn))
+                            {
+                                cmd.Parameters.Add(new SqlParameter("@ISBN", long.Parse(Key)));
+                                SqlDataAdapter adapter = new SqlDataAdapter();
+                                sqlcn.Open();
+                                adapter.SelectCommand = cmd;
+                                adapter.Fill(ds);
+                                dt = ds.Tables[0];
+                            }
+                        else throw new FormatException();
                     }
+                    #endregion
+                    #region 通过书名、作者名、出版社名模糊查询，并合并重复结果
                     catch (FormatException)
                     {
                         using (SqlCommand cmd = new SqlCommand("SELECT ISBN,AName,ANationality,BName,PubName FROM BOOKS,Authors,Publishers Where Books.AID=Authors.AID AND Books.PubID=Publishers.PubID AND BName like @BName;" +
-                                                                "SELECT ISBN,AName,ANationality,BName,PubName FROM BOOKS,Authors,Publishers Where Books.AID=Authors.AID AND Books.PubID=Publishers.PubID AND AName like @AName",
+                                                                "SELECT ISBN,AName,ANationality,BName,PubName FROM BOOKS,Authors,Publishers Where Books.AID=Authors.AID AND Books.PubID=Publishers.PubID AND AName like @AName;"+
+                                                                "SELECT ISBN,AName,ANationality,BName,PubName FROM BOOKS,Authors,Publishers Where Books.AID=Authors.AID AND Books.PubID=Publishers.PubID AND PubName like @PubName",
                                                                 sqlcn))
                         {
-                            cmd.Parameters.Add(new SqlParameter("@BName","%"+Key+"%") );
+                            cmd.Parameters.Add(new SqlParameter("@BName", "%" + Key + "%"));
                             cmd.Parameters.Add(new SqlParameter("@AName", "%" + Key + "%"));
-                            SqlDataAdapter adapter = new SqlDataAdapter();
-                            adapter.SelectCommand = cmd;
+                            cmd.Parameters.Add(new SqlParameter("@PubName", "%" + Key + "%"));
+                            SqlDataAdapter adapter = new SqlDataAdapter { SelectCommand = cmd };
                             adapter.Fill(ds);
+                            ds.Tables[0].Merge(ds.Tables[1]);
+                            ds.Tables[0].Merge(ds.Tables[2]);
                             var dv = new DataView(ds.Tables[0]);
                             string[] strCols = { "ISBN", "AName", "ANationality", "BName", "PubName" };
                             dt = dv.ToTable(true, strCols);
                         }
                     }
-
+                    #endregion
+                }
             }
-            // DataTable DT = ds.Tables[0];
+            #region 错误处理
+            catch (Exception ex)
+            {
+
+                var message = new myMessageBox("出现错误！" + Environment.NewLine + "详细信息" + ex.Message, "警告");
+                message.ShowDialog();
+                ParentWindow.frmMain.Navigate(index);
+            }
+            #endregion
+
+            #region 获取查询到的结果条数，绑定到xaml
             listBox.DataContext = dt;
             Countobj countobj = new Countobj { Count = dt.Rows.Count };
             countS.DataContext = countobj;
+            #endregion
         }
         #endregion
         #region 返回键
-        private void Back_Click(object sender, RoutedEventArgs e)
-        {
-            Index index = new Index { ParentWindow = ParentWindow };
-            ParentWindow.frmMain.Navigate(index);
-        }
+        private void Back_Click(object sender, RoutedEventArgs e) => ParentWindow.frmMain.Navigate(index);
         #endregion
         #region 双击列表条目跳转至详细信息
         private void ListBox_Selected(object sender, RoutedEventArgs e)
@@ -105,7 +118,7 @@ namespace WpfApp1
             var item = (sender as ListBox).SelectedItem;
             var temp = (item as DataRowView).Row.ItemArray[0];
             string ISBN=temp.ToString();
-            Detail detail = new Detail { _ISBN = ISBN, Res=this,ParentWindow=ParentWindow };
+            Detail detail = new Detail(ISBN, this, ParentWindow);
             ParentWindow.frmMain.Navigate(detail);
             return;
         }

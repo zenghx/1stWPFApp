@@ -152,11 +152,14 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Visibility="{Binding Converter={StaticResource VsbConverter}}" Content="提交修改" HorizontalContentAlignment="Center" Tag="modify" Click="Button_Click_1"
-                Margin="5" FontSize="18" Width="200" HorizontalAlignment="Right" Style="{StaticResource ButtonRevealStyle}" />
-            <Button Grid.Column="1" HorizontalContentAlignment="Center" Content="返回"  Tag="back" Click="Button_Click"
-                 Margin="5" FontSize="18" Width="200" HorizontalAlignment="Right" Style="{StaticResource ButtonRevealStyle}" />
+            <Button Grid.Column="0" Visibility="{Binding Converter={StaticResource VsbConverter}}" Content="删除记录" HorizontalContentAlignment="Center" Tag="delete" Click="DeleteButton_Click"
+                Margin="5" FontSize="18" Width="100" HorizontalAlignment="Right" Style="{StaticResource ButtonRevealStyle}" />
+            <Button Grid.Column="1" Visibility="{Binding Converter={StaticResource VsbConverter}}" Content="提交修改" HorizontalContentAlignment="Center" Tag="modify" Click="Update_Click"
+                Margin="5" FontSize="18" Width="100" HorizontalAlignment="Right" Style="{StaticResource ButtonRevealStyle}" />
+            <Button Grid.Column="2" HorizontalContentAlignment="Center" Content="返回"  Tag="back" Click="Button_Click"
+                 Margin="5" FontSize="18" Width="100" HorizontalAlignment="Right" Style="{StaticResource ButtonRevealStyle}" />
         </Grid>
 
     </Grid>

@@ -22,9 +22,8 @@ namespace WpfApp1
         public Window1()
         {
             InitializeComponent();
-            Index index = new Index();
+            Index index = new Index(this);
             frmMain.Content=index;
-            index.ParentWindow = this;
         }
 
     }
