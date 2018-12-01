@@ -9,6 +9,9 @@
       mc:Ignorable="d"  
       d:DesignHeight="450" d:DesignWidth="600" 
       Title="主页">
+    <Page.Resources>
+        <local:VisibilityConverter x:Key="VsbConverter"/>
+    </Page.Resources>
     <Grid Background="#30FFFFFF" fw:PointerTracker.Enabled="True" >
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -17,7 +20,7 @@
         </Grid.RowDefinitions>
         <Image Source="/Resources/Images/db.png"/>
         <StackPanel Grid.Row="1" VerticalAlignment="Center">
-            <TextBox x:Name="TextBox" Style="{StaticResource TextBoxRevealStyle}" TextChanged="TextBox_TextChanged" Padding="3"  FontSize="17" Margin="20,20" VerticalContentAlignment="Center"   Height="40" >
+            <TextBox x:Name="SearchBox" Style="{StaticResource TextBoxRevealStyle}" TextChanged="TextBox_TextChanged" Padding="3"  FontSize="17" Margin="20,20" VerticalContentAlignment="Center"   Height="40" >
                 请输入要查找的内容</TextBox>
         </StackPanel>
         <StackPanel Grid.Row="2" VerticalAlignment="Center">
@@ -27,13 +30,13 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="Qbutton" Tag="query" Style="{StaticResource ButtonRevealStyle}" Grid.Column="0" Margin="30,10" Padding="3" Click="button_Click">
+                <Button x:Name="Qbutton" IsDefault="True" Tag="query" Style="{StaticResource ButtonRevealStyle}" Grid.Column="0" Margin="30,10" Padding="3" Click="button_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Icons/query.png" Height="20"/>
                         <TextBlock Margin="2,0,0,0" FontSize="20">查找记录</TextBlock>
                     </StackPanel>
                 </Button>
-                <Button x:Name="Abutton" Tag="add" Style="{StaticResource ButtonRevealStyle}" Grid.Column="1" Margin="30,10" Padding="3" Click="button_Click">
+                <Button x:Name="Abutton" Tag="add" Style="{StaticResource ButtonRevealStyle}" Grid.Column="1" Visibility="{Binding Converter={StaticResource VsbConverter}}" Margin="30,10" Padding="3" Click="button_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Icons/add.png" Height="20"/>
                         <TextBlock Margin="2,0,0,0" FontSize="20">增加记录</TextBlock>

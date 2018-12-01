@@ -9,6 +9,10 @@
       xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"  
       fw:AcrylicWindow.Enabled="True"
       Title="Detail">
+    <Page.Resources>
+        <local:ReadOnlyConverter x:Key="RDOConverter"/>
+        <local:VisibilityConverter x:Key="VsbConverter"/>
+    </Page.Resources>
     <Grid Background="#30FFFFFF" fw:PointerTracker.Enabled="True">
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -33,7 +37,7 @@
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="ISBN" FontSize="15" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" />
-                    <TextBox x:Name="ISBN" Grid.Column="1" Height="30" Style="{StaticResource TextBoxRevealStyle}" Margin="3,0,10,0" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="ISBN" IsReadOnly="{Binding Converter={StaticResource RDOConverter}}" Grid.Column="1" Height="30" Style="{StaticResource TextBoxRevealStyle}" Margin="3,0,10,0" VerticalContentAlignment="Center"/>
                 </Grid>
             </StackPanel>
             <StackPanel>
@@ -43,7 +47,7 @@
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock  Text="图书名称" FontSize="15" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" />
-                    <TextBox x:Name="BName" Grid.Column="1" Height="30" Style="{StaticResource TextBoxRevealStyle}" Margin="3,0,10,0" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="BName" IsReadOnly="{Binding Converter={StaticResource RDOConverter}}" Grid.Column="1" Height="30" Style="{StaticResource TextBoxRevealStyle}" Margin="3,0,10,0" VerticalContentAlignment="Center"/>
                 </Grid>
             </StackPanel>
         </StackPanel>
@@ -56,7 +60,7 @@
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="销量" FontSize="15" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" />
-                    <TextBox x:Name="Sales" Grid.Column="1" Height="30" Style="{StaticResource TextBoxRevealStyle}" Margin="3,0,10,0" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="Sales" IsReadOnly="{Binding Converter={StaticResource RDOConverter}}" Grid.Column="1" Height="30" Style="{StaticResource TextBoxRevealStyle}" Margin="3,0,10,0" VerticalContentAlignment="Center"/>
                 </Grid>
             </StackPanel>
         </StackPanel>
@@ -69,7 +73,7 @@
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="作者代码" FontSize="15" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" />
-                    <TextBox x:Name="AID" Grid.Column="1" Height="30" Style="{StaticResource TextBoxRevealStyle}" Margin="3,0,10,0" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="AID" IsReadOnly="{Binding Converter={StaticResource RDOConverter}}" Grid.Column="1" Height="30" Style="{StaticResource TextBoxRevealStyle}" Margin="3,0,10,0" VerticalContentAlignment="Center"/>
                 </Grid>
             </StackPanel>
             <StackPanel>
@@ -79,7 +83,7 @@
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock  Text="作者姓名" FontSize="15" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" />
-                    <TextBox x:Name="AName" Grid.Column="1" Height="30" Style="{StaticResource TextBoxRevealStyle}" Margin="3,0,10,0" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="AName" IsReadOnly="{Binding Converter={StaticResource RDOConverter}}" Grid.Column="1" Height="30" Style="{StaticResource TextBoxRevealStyle}" Margin="3,0,10,0" VerticalContentAlignment="Center"/>
                 </Grid>
             </StackPanel>
         </StackPanel>
@@ -92,7 +96,7 @@
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="作者国籍" FontSize="15" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" />
-                    <TextBox x:Name="ANationality" Grid.Column="1" Height="30" Style="{StaticResource TextBoxRevealStyle}" Margin="3,0,10,0" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="ANationality" IsReadOnly="{Binding Converter={StaticResource RDOConverter}}" Grid.Column="1" Height="30" Style="{StaticResource TextBoxRevealStyle}" Margin="3,0,10,0" VerticalContentAlignment="Center"/>
                 </Grid>
             </StackPanel>
             <StackPanel>
@@ -107,7 +111,7 @@
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="出版社代码" FontSize="15" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" />
-                    <TextBox x:Name="PubID" Grid.Column="1" Height="30" Style="{StaticResource TextBoxRevealStyle}" Margin="3,0,10,0" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="PubID" IsReadOnly="{Binding Converter={StaticResource RDOConverter}}" Grid.Column="1" Height="30" Style="{StaticResource TextBoxRevealStyle}" Margin="3,0,10,0" VerticalContentAlignment="Center"/>
                 </Grid>
             </StackPanel>
             <StackPanel>
@@ -117,7 +121,7 @@
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock  Text="出版社名称" FontSize="15" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" />
-                    <TextBox x:Name="PubName" Grid.Column="1" Height="30" Style="{StaticResource TextBoxRevealStyle}" Margin="3,0,10,0" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="PubName" IsReadOnly="{Binding Converter={StaticResource RDOConverter}}" Grid.Column="1" Height="30" Style="{StaticResource TextBoxRevealStyle}" Margin="3,0,10,0" VerticalContentAlignment="Center"/>
                 </Grid>
             </StackPanel>
         </StackPanel>
@@ -130,7 +134,7 @@
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="出版社电话" FontSize="15" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" />
-                    <TextBox x:Name="PubTele" Grid.Column="1" Height="30" Style="{StaticResource TextBoxRevealStyle}" Margin="3,0,10,0" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="PubTele" IsReadOnly="{Binding Converter={StaticResource RDOConverter}}" Grid.Column="1" Height="30" Style="{StaticResource TextBoxRevealStyle}" Margin="3,0,10,0" VerticalContentAlignment="Center"/>
                 </Grid>
             </StackPanel>
             <StackPanel>
@@ -140,7 +144,7 @@
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="出版社地址" FontSize="15" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" />
-                    <TextBox x:Name="PubAddr" Grid.Column="1" Height="30" Style="{StaticResource TextBoxRevealStyle}" Margin="3,0,10,0" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="PubAddr" IsReadOnly="{Binding Converter={StaticResource RDOConverter}}" Grid.Column="1" Height="30" Style="{StaticResource TextBoxRevealStyle}" Margin="3,0,10,0" VerticalContentAlignment="Center"/>
                 </Grid>
             </StackPanel>
         </StackPanel>
@@ -149,7 +153,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0"  Content="提交修改" HorizontalContentAlignment="Center" Tag="modify" Click="Button_Click"
+            <Button Grid.Column="0" Visibility="{Binding Converter={StaticResource VsbConverter}}" Content="提交修改" HorizontalContentAlignment="Center" Tag="modify" Click="Button_Click_1"
                 Margin="5" FontSize="18" Width="200" HorizontalAlignment="Right" Style="{StaticResource ButtonRevealStyle}" />
             <Button Grid.Column="1" HorizontalContentAlignment="Center" Content="返回"  Tag="back" Click="Button_Click"
                  Margin="5" FontSize="18" Width="200" HorizontalAlignment="Right" Style="{StaticResource ButtonRevealStyle}" />

@@ -59,7 +59,7 @@
             <Label x:Name="countS" FontSize="18"  
                    Content="{Binding Count, Converter={StaticResource CConverter}}"/>
         </StackPanel>
-        <ListBox MouseDoubleClick="ListBox_Selected" SelectionMode="Single" Style="{StaticResource ListBoxRevealStyle}"  fw:PointerTracker.Enabled="True" x:Name="listBox" BorderThickness="0" Grid.Row="1" Background="#00ffffff" ItemTemplate="{StaticResource listBoxTemplate}" ItemsSource="{Binding Tables[0]}"/>
+        <ListBox MouseDoubleClick="ListBox_Selected" SelectionMode="Single" Style="{StaticResource ListBoxRevealStyle}"  fw:PointerTracker.Enabled="True" x:Name="listBox" BorderThickness="0" Grid.Row="1" Background="#00ffffff" ItemTemplate="{StaticResource listBoxTemplate}" ItemsSource="{Binding}"/>
 
         <Button x:Name="back" FontSize="20" Content="返回" Style="{StaticResource ButtonRevealStyle}" Grid.Row="2" Width="200" Margin="20,3" Height="40" HorizontalAlignment="Right" Click="Back_Click"/>
     </Grid>

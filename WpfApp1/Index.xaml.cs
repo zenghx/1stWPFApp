@@ -24,27 +24,27 @@ namespace WpfApp1
         {
             InitializeComponent();
             #region 设置自动选定
-            TextBox.PreviewMouseDown +=new MouseButtonEventHandler(TextBox_PreviewMouseDown);
-            TextBox.GotFocus +=new RoutedEventHandler(TextBox_GotFocus);
-            TextBox.LostFocus +=new RoutedEventHandler(TextBox_LostFocus);
+            SearchBox.PreviewMouseDown +=new MouseButtonEventHandler(TextBox_PreviewMouseDown);
+            SearchBox.GotFocus +=new RoutedEventHandler(TextBox_GotFocus);
+            SearchBox.LostFocus +=new RoutedEventHandler(TextBox_LostFocus);
             #endregion
-            TextBox.Foreground = Brushes.Gray;
+            SearchBox.Foreground = Brushes.Gray;
         }
         #region 设置自动选定
         private void TextBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            TextBox.PreviewMouseDown += new MouseButtonEventHandler(TextBox_PreviewMouseDown);
+            SearchBox.PreviewMouseDown += new MouseButtonEventHandler(TextBox_PreviewMouseDown);
         }
 
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            TextBox.SelectAll();
-            TextBox.PreviewMouseDown-= new MouseButtonEventHandler(TextBox_PreviewMouseDown);
+            SearchBox.SelectAll();
+            SearchBox.PreviewMouseDown-= new MouseButtonEventHandler(TextBox_PreviewMouseDown);
         }
 
         private void TextBox_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            TextBox.Focus();
+            SearchBox.Focus();
             e.Handled = true;
         }
         #endregion
@@ -52,7 +52,7 @@ namespace WpfApp1
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
            
-            TextBox.Foreground = Brushes.Black;
+            SearchBox.Foreground = Brushes.Black;
         }
         public Window1 ParentWindow { get; set; }
 
@@ -60,23 +60,29 @@ namespace WpfApp1
         {
             Button btn = (Button)sender;
             var name = btn.Tag.ToString();
-            object obj;
+            #region 根据按钮进行功能跳转
             if (name == "add")
             {
-                Add add = new Add();
-                add.ShowDialog();
-                return;
+                myMessageBox messageBox = new myMessageBox("当前用户组无法执行添加记录操作", "提示");
+                if (UserInfo.UsrGroup != 0)
+                    messageBox.ShowDialog();
+                else
+                {
+                    Add add = new Add();
+                    add.ShowDialog();
+                    return;
+                }
+
             }
             else if (name == "query")
             {
-                SearchRes res = new SearchRes { ParentWindow = ParentWindow };
-                obj = res;
+                SearchRes res = new SearchRes(ParentWindow, SearchBox.Text);
+                ParentWindow.frmMain.Content = res;
             }
             else if (name == "report")
             { return; }
             else return;
-            ParentWindow.frmMain.Content = obj;
-            
+            #endregion
         }
     }
 }

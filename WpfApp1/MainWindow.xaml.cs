@@ -37,23 +37,31 @@ namespace WpfApp1
             }
             #endregion
             InitializeComponent();
-
-
         }
         #region 按钮功能，通过认证则进入主窗口，否则弹出消息框
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (PassedAuthentication())
+            try
             {
-                Window1 window1 = new Window1();
-                window1.Show();
-                Close();
+                if (PassedAuthentication())
+                {
+                    Window1 window1 = new Window1();
+                    window1.Show();
+                    Close();
+                }
+                else
+                {
+                    myMessageBox myMessage = new myMessageBox("用户名或密码无效", "提示");
+                    myMessage.ShowDialog();
+                }
             }
-            else
+            catch (Exception excp)
             {
-                myMessageBox myMessage = new myMessageBox("用户名或密码无效", "提示");
-                myMessage.ShowDialog();
+
+                myMessageBox messageBox = new myMessageBox("出现错误！" + Environment.NewLine + "详细信息：" + excp.Message, "警告");
+                messageBox.ShowDialog();
             }
+
         }
         #endregion
         #region 从数据库中获取用户信息并进行验证，通过则返回true，并保存用户名和用户组

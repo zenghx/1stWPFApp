@@ -11,6 +11,34 @@ using System.Xml;
 
 namespace WpfApp1
 {
+    class ReadOnlyConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return UserInfo.UsrGroup != 0;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotSupportedException();
+        }
+    }
+
+    class VisibilityConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (UserInfo.UsrGroup != 0)
+                return "Hidden";
+            return "Visible";
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotSupportedException();
+        }
+    }
+
     class AuthorsPresentationConverter : IMultiValueConverter
     {
 

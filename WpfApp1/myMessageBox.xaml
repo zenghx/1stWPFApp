@@ -15,7 +15,8 @@
             <RowDefinition Height="3*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock  x:Name="MessageBlock" Text="初始化" VerticalAlignment="Center" Margin="10,0" FontSize="15"/>
+        <TextBlock  x:Name="MessageBlock"  TextWrapping="Wrap"
+                    Text="初始化" VerticalAlignment="Center" Margin="10,0" FontSize="15"/>
         <fw:DropShadowPanel Background="#30000000" Grid.Row="1"  ShadowMode="Outer" >
             <Button Content="确定" VerticalAlignment="Center" 
                     HorizontalAlignment="Right" Width="80" IsDefault="True"

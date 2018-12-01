@@ -27,11 +27,22 @@ namespace WpfApp1
         public Detail()
         {
             InitializeComponent();
+            Bind();
+        }
+
+        private void Bind()
+        {
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ParentWindow.frmMain.Navigate(Res);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

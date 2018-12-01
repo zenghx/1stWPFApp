@@ -146,7 +146,7 @@
                 </Grid>
             </StackPanel>
         </StackPanel>
-        <Button Grid.Column="1" Grid.Row="4" Content="提交" 
+        <Button Grid.Column="1" Grid.Row="4" Content="提交" Click="Button_Click"
                 Margin="10,3" FontSize="18" Width="200" HorizontalAlignment="Right" Style="{StaticResource ButtonRevealStyle}" />
     </Grid>
 </Window>
