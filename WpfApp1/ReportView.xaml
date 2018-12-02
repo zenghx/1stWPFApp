@@ -5,11 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="ReportView" Height="450" Width="800">
+        xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"  
+        fw:AcrylicWindow.Enabled="True"
+        Title="查看报表" Height="450" Width="740">
+    <Window.Resources>
+        <local:getURL x:Key="URL"/>
+    </Window.Resources>
     <Grid>
-        <WindowsFormsHost>
-            
-        </WindowsFormsHost>
-
+        <Frame Name="frmMain" NavigationUIVisibility="Hidden" />
     </Grid>
 </Window>

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="DataSource1">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=ZENGHX-LAPTOP\SQLEXPRESS;Initial Catalog=Chart</ConnectString>
+    <IntegratedSecurity>true</IntegratedSecurity>
+    <Prompt>为数据源 DataSource1 指定用户名和密码</Prompt>
+  </ConnectionProperties>
+  <DataSourceID>f91438e3-2e3a-47be-86c6-15e3a19e5976</DataSourceID>
+</RptDataSource>

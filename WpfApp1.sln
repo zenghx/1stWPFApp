@@ -5,16 +5,30 @@ VisualStudioVersion = 15.0.28010.2050
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{99805CD5-8073-4476-958C-EB4D615F307C}"
 EndProject
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "Report", "Report\Report\Report.rptproj", "{07F56A79-8035-497B-9725-761D6319D382}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		DebugLocal|Any CPU = DebugLocal|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{99805CD5-8073-4476-958C-EB4D615F307C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{99805CD5-8073-4476-958C-EB4D615F307C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99805CD5-8073-4476-958C-EB4D615F307C}.DebugLocal|Any CPU.ActiveCfg = Debug|Any CPU
+		{99805CD5-8073-4476-958C-EB4D615F307C}.DebugLocal|Any CPU.Build.0 = Debug|Any CPU
 		{99805CD5-8073-4476-958C-EB4D615F307C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99805CD5-8073-4476-958C-EB4D615F307C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07F56A79-8035-497B-9725-761D6319D382}.Debug|Any CPU.ActiveCfg = Debug
+		{07F56A79-8035-497B-9725-761D6319D382}.Debug|Any CPU.Build.0 = Debug
+		{07F56A79-8035-497B-9725-761D6319D382}.Debug|Any CPU.Deploy.0 = Debug
+		{07F56A79-8035-497B-9725-761D6319D382}.DebugLocal|Any CPU.ActiveCfg = DebugLocal
+		{07F56A79-8035-497B-9725-761D6319D382}.DebugLocal|Any CPU.Build.0 = DebugLocal
+		{07F56A79-8035-497B-9725-761D6319D382}.DebugLocal|Any CPU.Deploy.0 = DebugLocal
+		{07F56A79-8035-497B-9725-761D6319D382}.Release|Any CPU.ActiveCfg = Release
+		{07F56A79-8035-497B-9725-761D6319D382}.Release|Any CPU.Build.0 = Release
+		{07F56A79-8035-497B-9725-761D6319D382}.Release|Any CPU.Deploy.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -11,6 +11,19 @@ using System.Xml;
 
 namespace WpfApp1
 {
+    class getURL : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return "http://localhost:8080/ReportServer/Pages/ReportViewer.aspx?%2f%E6%8A%A5%E8%A1%A8%E9%A1%B9%E7%9B%AE1%2fReport1&rs:Command=Render";
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     class ReadOnlyConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "报表项目1", "报表项目1\报表项目1.rptproj", "{FEC3C9C8-9F4A-4DA9-A74F-62AB1484A585}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FEC3C9C8-9F4A-4DA9-A74F-62AB1484A585}.Debug|Default.ActiveCfg = Debug
+		{FEC3C9C8-9F4A-4DA9-A74F-62AB1484A585}.Debug|Default.Build.0 = Debug
+		{FEC3C9C8-9F4A-4DA9-A74F-62AB1484A585}.Debug|Default.Deploy.0 = Debug
+		{FEC3C9C8-9F4A-4DA9-A74F-62AB1484A585}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{FEC3C9C8-9F4A-4DA9-A74F-62AB1484A585}.DebugLocal|Default.Build.0 = DebugLocal
+		{FEC3C9C8-9F4A-4DA9-A74F-62AB1484A585}.Release|Default.ActiveCfg = Release
+		{FEC3C9C8-9F4A-4DA9-A74F-62AB1484A585}.Release|Default.Build.0 = Release
+		{FEC3C9C8-9F4A-4DA9-A74F-62AB1484A585}.Release|Default.Deploy.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E8300FF6-C6B6-40EF-9E1D-11E1456FF429}
+	EndGlobalSection
+EndGlobal

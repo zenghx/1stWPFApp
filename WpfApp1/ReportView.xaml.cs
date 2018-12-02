@@ -22,6 +22,7 @@ namespace WpfApp1
         public ReportView()
         {
             InitializeComponent();
+            frmMain.Navigate(new Uri("http://localhost:8080/ReportServer/Pages/ReportViewer.aspx?%2fReport%2fReport1&rs:Command=Render"));
         }
     }
 }
