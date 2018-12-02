@@ -23,14 +23,20 @@ namespace WpfApp1
     public partial class Detail : Page
     {
         private string _ISBN { set; get; }
+        private int oldAID { set; get; }
+        private int oldPubID { set; get; }
         private SearchRes Res { set; get; }
         private Window1 ParentWindow { get; set; }
+        private HashSet<TextBox> ChangedTextBox { get; set; }
+        private int TextBoxChangedCounter { get; set; }
 
         public Detail(string ISBN,SearchRes res,Window1 window)
         {
             _ISBN = ISBN;
             Res = res;
             ParentWindow = window;
+            ChangedTextBox = new HashSet<TextBox>();
+            TextBoxChangedCounter = 0;
             InitializeComponent();
             Bind();
         }
@@ -53,6 +59,8 @@ namespace WpfApp1
                         ISBN.Text = ds.Tables[0].Rows[0][0].ToString();
                         AID.Text = ds.Tables[0].Rows[0][1].ToString();
                         PubID.Text = ds.Tables[0].Rows[0][2].ToString();
+                        oldAID = int.Parse(AID.Text);
+                        oldPubID = int.Parse(PubID.Text);
                         BName.Text = ds.Tables[0].Rows[0][3].ToString();
                         Sales.Text = ds.Tables[0].Rows[0][4].ToString();
                     }
@@ -86,7 +94,7 @@ namespace WpfApp1
                 #region 错误处理
                 catch (Exception ex)
                 {
-                    var message = new myMessageBox("出现错误！" + Environment.NewLine + "详细信息" + ex.Message, "警告");
+                    var message = new myMessageBox("出现错误！" + Environment.NewLine + "详细信息：" + ex.Message, "警告");
                     message.ShowDialog();
                     ParentWindow.frmMain.Navigate(Res);
                 }
@@ -98,9 +106,72 @@ namespace WpfApp1
 
         private void Update_Click(object sender, RoutedEventArgs e)
         {
-
+            using (SqlConnection sqlcn = new SqlConnection(Config.SqlCredentials))
+                try
+                {
+                    sqlcn.Open();
+                    foreach (TextBox textBox in ChangedTextBox)
+                    {
+                        #region 被修改内容为Authors表中内容，若PubID被修改，则级联修改到Books表
+                        if (textBox.Name.StartsWith("A"))
+                        {
+                            using (SqlCommand cmd = new SqlCommand("UPDATE Authors SET "+textBox.Name+"=@value WHERE AID=@oldAID", sqlcn))
+                            {
+                                cmd.Parameters.Add(new SqlParameter("@oldAID", oldAID));
+                                if (textBox.Name == "AID")
+                                    cmd.Parameters.Add(new SqlParameter("@value", int.Parse(textBox.Text)));
+                                else
+                                    cmd.Parameters.Add(new SqlParameter("@value", textBox.Text));
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                        #endregion
+                        #region 被修改内容为Publishers表中内容，若PubID被修改，则级联修改到Books表
+                        else if (textBox.Name.StartsWith("Pub"))
+                        {
+                            using (SqlCommand cmd = new SqlCommand("UPDATE Publishers SET "+textBox.Name+ "=@value WHERE PubID=@oldPubID", sqlcn))
+                            {
+                                cmd.Parameters.Add(new SqlParameter("@oldPubID", oldPubID));
+                                if (textBox.Name == "PubID")
+                                    cmd.Parameters.Add(new SqlParameter("@value", int.Parse(textBox.Text)));
+                                else
+                                    cmd.Parameters.Add(new SqlParameter("@value", textBox.Text));
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                        #endregion
+                        #region 被修改内容为Books表中非外键内容
+                        else
+                        {
+                               using (SqlCommand cmd = new SqlCommand("UPDATE Books SET "+textBox.Name+"=@value WHERE ISBN=@oldISBN", sqlcn))
+                               {
+                                cmd.Parameters.Add(new SqlParameter("@oldISBN", long.Parse(_ISBN)));
+                                if (textBox.Name == "ISBN")
+                                    if (textBox.Text.Length != 13 && textBox.Text.Length != 10)
+                                        throw new FormatException("ISBN长度有误");
+                                    else cmd.Parameters.Add(new SqlParameter("@value", long.Parse(textBox.Text)));
+                                else if (textBox.Name == "Sales")
+                                    cmd.Parameters.Add(new SqlParameter("@value", int.Parse(textBox.Text)));
+                                else
+                                    cmd.Parameters.Add(new SqlParameter("@value", textBox.Text));
+                                    cmd.ExecuteNonQuery();
+                                }
+                        }
+                        #endregion
+                    }
+                    var message = new myMessageBox("修改成功！", "提示");
+                    message.ShowDialog();
+                    ParentWindow.frmMain.Navigate(new Index(ParentWindow));
+                }
+                #region 错误处理
+                catch (Exception excp)
+                {
+                    myMessageBox messageBox = new myMessageBox("出现错误！" + Environment.NewLine + "详细信息：" + excp.Message, "警告");
+                    messageBox.ShowDialog();
+                }
+                #endregion
         }
-
+        #region 删除记录
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             #region 删除当前图书记录
@@ -130,5 +201,15 @@ namespace WpfApp1
 
 
         }
+        #endregion
+        #region 获取被修改过的TextBox
+        private void TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBoxChangedCounter++;
+            if (TextBoxChangedCounter > 10)
+                ChangedTextBox.Add((TextBox)sender);
+            else return;
+        }
+        #endregion
     }
 }

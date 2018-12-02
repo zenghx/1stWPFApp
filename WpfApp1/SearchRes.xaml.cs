@@ -25,12 +25,10 @@ namespace WpfApp1
     {
         private string Key { get; set; }
         private Window1 ParentWindow { get; set; }
-        private Index index;
         
-        public SearchRes(Window1 window,string Key,Index index)
+        public SearchRes(Window1 window,string Key)
         {
             this.Key = Key;
-            this.index = index;
             ParentWindow = window;
             InitializeComponent();
             Bind();
@@ -98,7 +96,7 @@ namespace WpfApp1
 
                 var message = new myMessageBox("出现错误！" + Environment.NewLine + "详细信息" + ex.Message, "警告");
                 message.ShowDialog();
-                ParentWindow.frmMain.Navigate(index);
+                ParentWindow.frmMain.Navigate(new Index(ParentWindow));
             }
             #endregion
 
@@ -110,7 +108,7 @@ namespace WpfApp1
         }
         #endregion
         #region 返回键
-        private void Back_Click(object sender, RoutedEventArgs e) => ParentWindow.frmMain.Navigate(index);
+        private void Back_Click(object sender, RoutedEventArgs e) => ParentWindow.frmMain.Navigate(new Index(ParentWindow));
         #endregion
         #region 双击列表条目跳转至详细信息
         private void ListBox_Selected(object sender, RoutedEventArgs e)

@@ -65,20 +65,13 @@ namespace WpfApp1
             #region 根据按钮进行功能跳转
             if (name == "add")
             {
-                myMessageBox messageBox = new myMessageBox("当前用户组无法执行添加记录操作", "提示");
-                if (UserInfo.UsrGroup != 0)
-                    messageBox.ShowDialog();
-                else
-                {
-                    Add add = new Add();
-                    add.ShowDialog();
-                    return;
-                }
-
+                Add add = new Add();
+                add.ShowDialog();
+                return;
             }
             else if (name == "query")
             {
-                SearchRes res = new SearchRes(ParentWindow, SearchBox.Text,this);
+                SearchRes res = new SearchRes(ParentWindow, SearchBox.Text);
                 ParentWindow.frmMain.Content = res;
             }
             else if (name == "report")
