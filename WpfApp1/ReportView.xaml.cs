@@ -19,10 +19,6 @@ namespace WpfApp1
     /// </summary>
     public partial class ReportView : Window
     {
-        public ReportView()
-        {
-            InitializeComponent();
-            frmMain.Navigate(new Uri("http://localhost:8080/ReportServer/Pages/ReportViewer.aspx?%2fReport%2fReport1&rs:Command=Render"));
-        }
+        public ReportView() => InitializeComponent();
     }
 }

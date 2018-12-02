@@ -75,7 +75,11 @@ namespace WpfApp1
                 ParentWindow.frmMain.Content = res;
             }
             else if (name == "report")
-            { return; }
+            {
+                ReportView report = new ReportView();
+                report.ShowDialog();
+                return;
+            }
             else return;
             #endregion
         }
