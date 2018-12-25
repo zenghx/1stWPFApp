@@ -11,10 +11,7 @@
         WindowStartupLocation="CenterScreen"
         Icon="/Resources/Icons/report_128.png"
         Title="查看报表" Height="450" Width="740">
-    <Window.Resources>
-        <local:getURL x:Key="URL"/>
-    </Window.Resources>
-    <Grid>
+	<Grid>
         <WebBrowser Source="http://localhost:8080/ReportServer/Pages/ReportViewer.aspx?%2fReport%2fReport1&amp;rs:Command=Render"/>
     </Grid>
 </Window>

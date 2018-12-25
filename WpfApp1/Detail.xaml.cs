@@ -103,7 +103,8 @@ namespace WpfApp1
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) => ParentWindow.frmMain.Navigate(Res);
-
+        
+        #region 修改记录
         private void Update_Click(object sender, RoutedEventArgs e)
         {
             using (SqlConnection sqlcn = new SqlConnection(Config.SqlCredentials))
@@ -171,6 +172,8 @@ namespace WpfApp1
                 }
                 #endregion
         }
+        #endregion
+
         #region 删除记录
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {

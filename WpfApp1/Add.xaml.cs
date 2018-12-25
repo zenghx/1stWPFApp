@@ -26,8 +26,8 @@ namespace WpfApp1
             InitializeComponent();
         }
 
-        
 
+        #region 添加记录
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             DataSet ds = new DataSet();
@@ -94,13 +94,15 @@ namespace WpfApp1
                 Close();
                 #endregion
             }
+            #region 错误处理
             catch (Exception excp)
             {
                 myMessageBox messageBox = new myMessageBox("出现错误！"+Environment.NewLine+"详细信息："+excp.Message, "警告");
                 messageBox.ShowDialog();
             }
-
+            #endregion
 
         }
+        #endregion
     }
 }
