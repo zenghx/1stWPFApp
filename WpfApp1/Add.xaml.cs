@@ -58,7 +58,7 @@ namespace WpfApp1
                     }
                     #endregion
                 #region 根据检查结果决定是否对每个表插入新数据
-                    if (ds.Tables[1].Rows[0][0].ToString() == "0")
+                    if (ds.Tables[2].Rows[0][0].ToString() == "0")
                         using (SqlCommand cmd = new SqlCommand("Insert into Publishers(PubID,PubName,PubTele,PubAddr) Values(@PubID,@PubName,@PubTele,@PubAddr) ", sqlcn))
                         {
                             cmd.Parameters.Add(new SqlParameter("@PubID", int.Parse(PubID.Text)));
